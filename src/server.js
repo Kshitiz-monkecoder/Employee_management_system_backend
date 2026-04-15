@@ -2,7 +2,7 @@ require('dotenv').config();
 const app = require('./app');
 const connectDB = require('./config/database');
 const logger = require('./config/logger');
-const seedIfEmpty = require('./seed/seedIfEmpty');
+const seedIfEmpty = require('./utils/seedIfEmpty');
 
 process.on('uncaughtException', (err) => {
   logger.error('UNCAUGHT EXCEPTION! Shutting down...', { error: err.message });
