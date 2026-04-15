@@ -2,6 +2,7 @@ require('dotenv').config();
 const app = require('./app');
 const connectDB = require('./config/database');
 const logger = require('./config/logger');
+const seedIfEmpty = require('./seed/seedIfEmpty');
 
 process.on('uncaughtException', (err) => {
   logger.error('UNCAUGHT EXCEPTION! Shutting down...', { error: err.message, stack: err.stack });
@@ -9,6 +10,9 @@ process.on('uncaughtException', (err) => {
 });
 
 connectDB();
+
+ await seedIfEmpty();
+
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => {
