@@ -32,7 +32,11 @@ const startServer = async () => {
     });
 
   } catch (err) {
-    logger.error('Startup error:', err.message);
+    logger.error('Startup error:', {
+  message: err.message,
+  stack: err.stack,
+  fullError: err,
+});
     process.exit(1);
   }
 };
